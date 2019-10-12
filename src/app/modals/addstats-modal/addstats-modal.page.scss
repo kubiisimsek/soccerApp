@@ -1,0 +1,29 @@
+$homeTeamColor:rgb(118, 2, 172);
+.content {
+    width: 100%;
+    .list {
+        font-family: 'Consolas';
+        .league-dropdown {
+            width: 100%;
+            font-size: 12px;
+            letter-spacing: 1.1px;
+        }
+        .add-inputs{
+            width: 50%;
+            display: block;
+            ion-label{
+                color:#333;
+                font-size: 12px;
+                letter-spacing: 1.1px;
+            }
+        }                 
+        .hometeam-inputs{
+            float: left;
+        }
+        .awayteam-inputs{
+            float:right;
+        }
+    }
+
+
+}

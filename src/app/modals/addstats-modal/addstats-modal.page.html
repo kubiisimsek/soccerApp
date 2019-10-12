@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button  (click)="closeModal()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Append to stats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content" color="light" padding>
+  <ion-list class="list">
+    <ion-item class="league-dropdown" color=light>
+      <ion-label>Select League</ion-label>
+      <ion-select value="" okText="Select" cancelText="Cancel" (ionChange)="leagueChange()" [(ngModel)]="selectLeague">
+        <ion-select-option *ngFor="let lg of leagueNameList.sort()" value="{{lg}}">{{lg}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="league-dropdown" color=light>
+      <ion-label>Select Home Team</ion-label>
+      <ion-select value="" okText="Select" cancelText="Cancel" [disabled]="!selectLeague" [(ngModel)]="selectHomeTeam">
+        <ion-select-option *ngFor="let team of teamList" value="{{team}}">{{team}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="league-dropdown" color=light>
+      <ion-label>Select Away Team</ion-label>
+      <ion-select value="" okText="Select" cancelText="Cancel" [disabled]="!selectHomeTeam" [(ngModel)]="selectAwayTeam" (ionChange)="awayTeamChange()">
+        <ion-select-option *ngFor="let team of teamList" value="{{team}}">{{team}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="league-dropdown" color=light>
+      <ion-label>Select Stats Type</ion-label>
+      <ion-select value="" okText="Select" cancelText="Cancel" [disabled]="!selectAwayTeam" [(ngModel)]="selectType">
+        <ion-select-option value="Score">Score</ion-select-option>
+        <ion-select-option value="Corner">Corner</ion-select-option>
+        <ion-select-option value="Foul">Foul</ion-select-option>
+        <ion-select-option value="Shot">Shot</ion-select-option>
+        <ion-select-option value="Offside">Offside</ion-select-option>
+        <ion-select-option value="Penalty">Penalty</ion-select-option>
+        <ion-select-option value="Red Card">Red Card</ion-select-option>
+        <ion-select-option value="Yellow Card">Yellow Card</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="add-inputs hometeam-inputs">
+      <ion-item class="hm-first-half" color="light">
+        <ion-label position="floating">HomeTeam First Half</ion-label>
+        <ion-input color="danger" type="number" [maxlength]="3" [minlength]="1" required [(ngModel)]="homeFH"></ion-input>
+      </ion-item>
+      <ion-item class="hm-second-half" color="light">
+        <ion-label position="floating">HomeTeam Second Half</ion-label>
+        <ion-input color="danger" type="number" [maxlength]="3" [minlength]="1" required [(ngModel)]="homeSH"></ion-input>
+      </ion-item>
+    </div>
+    <div class="add-inputs awayteam-inputs">
+      <ion-item class="aw-first-half" color="light">
+        <ion-label position="floating">AwayTeam First Half</ion-label>
+        <ion-input color="danger" type="number" [maxlength]="3" [minlength]="1" required [(ngModel)]="awayFH"></ion-input>
+      </ion-item>
+      <ion-item class="aw-second-half" color="light">
+        <ion-label position="floating">AwayTeam Second Half</ion-label>
+        <ion-input color="danger" type="number" [maxlength]="3" [minlength]="1" required [(ngModel)]="awaySH"></ion-input>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-button style="width: 100%;margin-top:10px;" color="danger" expand="block" fill="outline" (click)="addStats()">
+    <ion-icon slot="start" name="add-circle-outline"></ion-icon> Append to stats
+  </ion-button>
+
+</ion-content>

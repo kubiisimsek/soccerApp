@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar  color="light">
+    <ion-buttons slot="start">
+      <ion-button  (click)="closeModal()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card class="signup-form-card">
+    <mat-form-field class="input name-input">
+      <input maxlength="15" [(ngModel)]="userInfo.user_name" matInput placeholder="Name" required>
+    </mat-form-field>
+    <mat-form-field class="input surname-input">
+      <input maxlength="15" [(ngModel)]="userInfo.user_surname" matInput placeholder="Surname" required>
+    </mat-form-field>
+    <mat-form-field class="input phone-input">
+      <input maxlength="11" [(ngModel)]="userInfo.user_phone" matInput placeholder="Phone" required>
+    </mat-form-field>
+    <mat-form-field class="input team-input">
+      <input maxlength="15" [(ngModel)]="userInfo.user_team" matInput placeholder="Favorite Team" required>
+    </mat-form-field>
+    <mat-form-field class="input email-input">
+      <input maxlength="30" [(ngModel)]="userInfo.user_email" matInput placeholder="E-Mail" required>
+    </mat-form-field>
+    <mat-form-field class="input password-input">
+      <input maxlength="15" [(ngModel)]="userInfo.user_password" type="password" matInput placeholder="Password" required>
+    </mat-form-field>
+    <mat-form-field class="input passwordagain-input">
+      <input maxlength="15" [(ngModel)]="passwordAgain" type="password" matInput placeholder="Password Again" required>
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="isChecked" class="checkbox">Approve the user agreement</mat-checkbox>
+    <button class="signup-button" (click)="register()" mat-raised-button color="accent">Register</button>
+  </ion-card>
+</ion-content>

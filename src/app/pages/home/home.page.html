@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="showNewStats()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Homepage</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-grid>
+    <ion-row class="top-bar">
+      <ion-segment class="segment" color="dark" (ionChange)="segmentChange($event)" scrollable>
+        <ion-segment-button value="games" class="segment-button" checked>
+          <ion-label class="segment-label"> Game of the week</ion-label> <!-- Sabit sayfa -->
+        </ion-segment-button>
+        <!-- Kullanıcı stats ekledikce ngFor ile burdan eklenecek -->
+          <ion-segment-button *ngFor="let st of statsPageNames"  value="{{st.ID}}">
+            <ion-label class="segment-label"> {{st.stats_name}}</ion-label>
+          </ion-segment-button>
+      </ion-segment>
+    </ion-row>
+    <ion-row  class="content">
+      <ng-template [ngIf]="showMatches()">
+          <ion-card *ngFor="let match of matches" class="game-info-card">
+            <ion-card-header class="game-card-header">
+              <ion-card-title class="hometeam-title">{{match.homeTeamName}}</ion-card-title>
+              <ion-card-title class="awayteam-title">{{match.awayTeamName}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row class="row-center">
+                  <div class="first-half-title">
+                    Estimated First Half
+                  </div>
+                </ion-row>
+                <ion-row class="row-wd-100 ">
+                  <div class="first-half-score">
+                    <span class="hometeam-score">{{match.estimated.HFH}}</span>
+                    -
+                    <span class="awayteam-score">{{match.estimated.AFH}}</span>
+                  </div>
+                </ion-row>
+                <ion-row class="row-wd-100">
+                  <div class="second-half-title">
+                    Estimated Match Result
+                  </div>
+                </ion-row>
+                <ion-row class="row-wd-100">
+                  <div class="second-half-score">
+                    <span class="hometeam-score">{{match.estimated.HMR}}</span>
+                    -
+                    <span class="awayteam-score">{{match.estimated.AMR}}</span>
+                  </div>
+                </ion-row>
+                <ion-row class="row-wd-100">
+                  <ion-button style="width: 100%;margin-top:10px;" color="medium" expand="block" fill="outline"
+                    (click)="showPrevious(match.homeTeamName,match.awayTeamName)">Previous Games</ion-button>
+                </ion-row>
+
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+      </ng-template>
+      <ng-template [ngIf]="showCards">
+          <ion-card *ngFor="let st of statsInPage" class="stats-card">
+              <ion-card-header class="stats-card-header">
+                <ion-card-title>{{st.stats_hometeam}}-{{st.stats_awayteam}}</ion-card-title>
+                <ion-card-subtitle>{{st.stats_type}}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-grid class="stats-info">
+                  <ion-row>
+                    <ion-col size="2">
+                      FH:
+                    </ion-col>
+                    <ion-col size="8">
+                      {{st.stats_hometeam_fh}}-{{st.stats_awayteam_fh}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="2">
+                      MR:
+                    </ion-col>
+                    <ion-col size="8">
+                      {{st.stats_hometeam_sh}}-{{st.stats_awayteam_sh}}
+                    </ion-col>
+                  </ion-row>
+
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+            <ion-button style="width: 100%;margin-top:10px;" color="danger" fill="outline" expand="block" (click)="showAddStats()" >Add stats</ion-button>
+      </ng-template>
+    </ion-row>
+  </ion-grid>
+</ion-content>

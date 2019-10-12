@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button  (click)="closeModal()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Previous Games</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-grid>
+    <ion-row class="top-bar">
+      <ion-segment color="danger" (ionChange)="topBarChange($event)">
+        <ion-segment-button value="{{ homeTeam }}" checked>
+          <ion-label>{{ homeTeam }}</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="{{ awayTeam }}">
+          <ion-label>{{ awayTeam }}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row>
+    <ion-row class="content">
+      <ion-card class="content-card">
+        <ion-card-header class="card-header">
+          <ion-segment color="dark" (ionChange)="cardBarChange($event)">
+            <ion-segment-button value="Season">
+              <ion-label>Season</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="Home">
+              <ion-label>Home</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="Away">
+              <ion-label>Away</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <ion-card-title>{{ selectedTeam }}</ion-card-title>
+          <ion-card-subtitle>{{ selectedCardMenu }} Matches </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="match-info" *ngFor="let info of showSelected"> <!-- Döngü kısmı -->
+            <ion-label>
+              <span
+                [ngClass]="{
+                  'ht-color': selectedCardMenu === 'Home'
+                }"
+                >{{info.homeTeamName}}</span
+              >
+              -
+              <span
+                [ngClass]="{
+                  'ht-color': selectedCardMenu === 'Away'
+                }"
+                >{{info.awayTeamName}}</span
+              >
+            </ion-label>
+            <ion-row style="border-bottom: 1px solid gainsboro;">
+              <ion-col size="2">
+                <span style="color:goldenrod">FH:</span>
+              </ion-col>
+              <ion-col size="8">
+                  {{info.firstHalfScore}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <span style="color:tomato">MR:</span>
+              </ion-col>
+              <ion-col size="8">
+                {{info.matchResult}}
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

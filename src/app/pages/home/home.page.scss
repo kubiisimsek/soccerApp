@@ -1,0 +1,100 @@
+ion-content{
+    
+    .top-bar{
+        .segment{
+            font-size: 16px;
+            .segment-button{
+                width: auto;
+                height: auto;
+            }
+            .segment-label{
+                padding: 10px 10px;
+                font-size: 16px;
+            }
+        }
+    }
+    .dropdown{
+        margin-top:10px;
+        .dropdown-item{
+            --background:transparent;
+            width: 100%;
+            
+        }
+    }
+    .content{
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+        .game-info-card{
+            width: 100%;
+            height: auto;;
+            .game-card-header{
+                display: block;
+                height: auto;
+                .hometeam-title{
+                    font-size: 17px;
+                    margin-left: 5%;
+                    float: left;
+                    color:rgb(157, 102, 179);
+                }
+                .awayteam-title{
+                    font-size: 17px;
+                    margin-right: 5%;
+                    float: right;
+                    color:rgb(216, 116, 137);
+                }
+            }
+            .row-wd-100{
+                width: 100%;
+            }
+            ion-card-content{
+                margin-top:20px;
+                .first-half-title,.second-half-title{
+                    width: 100%;
+                    text-align: center;
+                    font-family: 'consolas';
+                    font-size: 16px;
+                    letter-spacing: 1.2px;
+                    color:rgba(112, 92, 92, 0.747);
+                }
+                .first-half-score,.second-half-score{
+                    width: 100%;
+                    text-align: center;
+                    font-size: 20px;
+                    margin-top: 5px;
+                    .hometeam-score{
+                        color:rgb(157, 102, 179);
+                    }
+                    .awayteam-score{
+                        color:rgb(216, 116, 137);
+                    }
+                }
+            }
+
+        }
+
+        .stats-card {
+            width: 100%;
+            text-align: center;
+            .stats-card-header {
+                ion-card-title {
+                    margin-top: 10px;
+                    font-size: 20px;
+                    font-family: sans-serif;
+                    letter-spacing: 1.1px;
+                    color: rgb(68, 68, 68);
+                }
+                ion-card-subtitle{
+                    margin-top: 5px;
+                    font-size: 12px;
+                    font-family: sans-serif;
+                    color: rgb(138, 138, 138);             
+                }
+            }
+            .stats-info{
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}

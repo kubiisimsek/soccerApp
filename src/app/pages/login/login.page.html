@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="logo">
+    <img src="assets/logo.png" alt="">
+  </div>
+  <div class="login-form">
+    <mat-form-field class="input username-input">
+      <input matInput [(ngModel)]="username" placeholder="Username" required>
+    </mat-form-field>
+    <mat-form-field class="input password-input">
+      <input type="password" [(ngModel)]="password" maxlength="20" matInput placeholder="Password" required>
+    </mat-form-field>
+    <div class="buttons">
+        <button class="login-button" (click)="login()" mat-raised-button >Login</button>
+        <button class="sign-button" (click)="signUp()" mat-raised-button>Register</button>
+    </div>
+  </div>
+</ion-content>
