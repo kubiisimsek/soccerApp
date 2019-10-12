@@ -12,7 +12,7 @@ export class ApiService {
     private http:HttpClient
   ) { }
 
-  URL:string="http://iddaa.kubisimsek.com/";
+  URL:string="localhost/soccerapp/";
   loginGET:string="login";
   registerPOST:string="register.php";
   eventsGET:string="iddaa.php";
