@@ -1,0 +1,13 @@
+RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-f
+Options -Indexes
+
+RewriteRule ^login/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$ login.php?user_email=$1&user_password=$2 [QSA,L]
+RewriteRule ^stats/user/([0-9]+)$ stats.php?user_id=$1 [QSA,L]
+RewriteRule ^stats/userstats/([0-9]+)$ stats.php?user_stats=$1 [QSA,L]
+RewriteRule ^fixture/([A-Za-z0-9-]+)$ fixture.php?team=$1 [QSA,L]
+
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Max-Age "1000"
+Header always set Access-Control-Allow-Headers "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding"
+Header always set Access-Control-Allow-Methods "POST, GET"
